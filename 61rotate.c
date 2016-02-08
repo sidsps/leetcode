@@ -6,6 +6,8 @@
  * };
  */
 struct ListNode* rotateRight(struct ListNode* head, int k) {
+    if(head == NULL || head->next == NULL)
+        return head;
     struct ListNode *ptr = head, *firstNode = NULL, *lastNode = NULL;
     int numberNodes = 0;
     while(ptr != NULL)
@@ -14,6 +16,8 @@ struct ListNode* rotateRight(struct ListNode* head, int k) {
         numberNodes += 1;
     }
     k = k % numberNodes;
+    if(k == numberNodes || k == 0)
+        return head;
     numberNodes -= k;
     ptr = head;
     for(int i = 0;i < numberNodes - 1;i++)
